@@ -1,0 +1,19 @@
+import{Page, expect, Locator} from '@playwright/test';
+import { HomePage } from './HomePage';
+
+export class LogoutPage{
+
+    private readonly page:Page;
+    private readonly btnContinue:Locator;
+
+
+    constructor(page:Page){
+        this.page=page;
+        this.btnContinue=page.locator('.btn.btn-primary');
+    }
+
+    async clickContinue():Promise<HomePage>{
+        await this.btnContinue.click();
+        return new HomePage(this.page);
+    }
+}
